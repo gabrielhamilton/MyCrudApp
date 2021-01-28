@@ -1,0 +1,7 @@
+{
+  "name": "MeuCrudApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
