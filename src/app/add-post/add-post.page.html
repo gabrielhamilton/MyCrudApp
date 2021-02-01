@@ -14,12 +14,11 @@
     <ion-label position="floating">Descrição</ion-label>
     <ion-input type="text" [(ngModel)]="post.details" required></ion-input>
   </ion-item>
- 
-  <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
-    <ion-card-header>
-      <ion-card-title>Choose Images to Upload</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+  
+  <ion-item>
+    <input type="file" name="inputFile" (change)="chooseFile($event)" required>
+  </ion-item>
+
   <ion-button 
    class="ion-padding" 
    color="primary"

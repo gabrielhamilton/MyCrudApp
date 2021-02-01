@@ -11,15 +11,17 @@ import { Post } from "../models/post.model"
 })
 export class AddPostPage implements OnInit {
 post = {} as Post;
+  selectedFile: any;
 
   constructor(
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private firestore: AngularFirestore
-  ) { }
+  ) {}
 
   ngOnInit() {}
+
 
   async createPost(post: Post){
     if(this.formValidation()) {
@@ -34,15 +36,15 @@ post = {} as Post;
       } catch(e){
         this.showToast(e);
       }
+        
+
 
       (await loader).dismiss();
 
       this.navCtrl.navigateRoot("home");
   
   }
-
-  }
-
+}
   formValidation(){
     if(!this.post.title){
       this.showToast("Titulo");
@@ -53,8 +55,7 @@ post = {} as Post;
       return false;
     }
     return true;
-  }     
-
+}     
   showToast(message: string){
     this.toastCtrl
     .create({
@@ -63,8 +64,10 @@ post = {} as Post;
     })
     .then(toastData => toastData.present());
 
+}  
+//escolher arquivo 
+chooseFile (event) {
+    this.selectedFile = event.target.files
   }
-
-
 
 }
